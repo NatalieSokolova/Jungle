@@ -18,9 +18,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-        # Directs /oducts/* to Admin::ProductsController
-        # (app/controllers/admin/products_controller.rb)
-        resources :categories, except: [:destroy, :edit, :update]
+        resources :categories, except: [:destroy, :edit, :update, :show]
       end
 
   get 'about/', to: 'about#show'
