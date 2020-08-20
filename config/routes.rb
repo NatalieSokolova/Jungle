@@ -17,6 +17,12 @@ Rails.application.routes.draw do
     resources :products, except: [:edit, :update, :show]
   end
 
+  namespace :admin do
+        # Directs /oducts/* to Admin::ProductsController
+        # (app/controllers/admin/products_controller.rb)
+        resources :categories, except: [:destroy, :edit, :update]
+      end
+
   get 'about/', to: 'about#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -69,7 +75,7 @@ Rails.application.routes.draw do
 
   # Example resource route within a namespace:
   #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # Directs /oducts/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
