@@ -42,6 +42,11 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include "Password can't be blank"
     end
 
+    it 'should not create a new user if password is shorter than 4 characters' do
+      @user = User.create(first_name: 'James', last_name: 'Joyce', email: 'ulysses@email.com', password: 'day', password_confirmation: 'day')
+      expect(@user.errors.full_messages).to include "Password is too short (minimum is 4 characters)"
+    end
+
     it 'should not create a new user if password_confirmation is not present' do
       @user = User.create(first_name: 'James', last_name: 'Joyce', email: 'ulysses@email.com', password: 'Bloomsday', password_confirmation: nil)
       expect(@user.errors.full_messages).to include "Password confirmation can't be blank"
