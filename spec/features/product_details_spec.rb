@@ -21,14 +21,16 @@ RSpec.feature "Visitor navigates to product detail page by clicking on a product
   scenario "User clicks on product details" do
     # ACT
     visit root_path
-    page.first("article.product").hover.find("footer.actions").click_on("Details")
+
+    # VERIFY
+    expect(page).to have_css('article.product', count: 10)
+    expect(page).to have_text('64.99')
+    page.first("article.product").click_on("Details")
 
     # DEBUG
     save_screenshot('product_hover.png')
 
     # VERIFY
-    expect(page).to have_css('article.product', count: 10)
-    expect(page).to have_text('64.99')
     expect(page).to have_css 'section.products-show'
     expect(page).to have_text('Quantity')
   end

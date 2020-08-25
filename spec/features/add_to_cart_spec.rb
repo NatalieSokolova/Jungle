@@ -18,15 +18,16 @@ RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
     end
   end
 
-  scenario "User sees all products" do
+  scenario "User adds an item to cart" do
     # ACT
     visit root_path
+    expect(page).to have_css("div#navbar", text: "My Cart (0)")
+    page.first("article.product").click_on("Add")
+    # DEBUG 
+    save_screenshot('cart.png')
 
-    # DEBUG / VERIFY
-    # naming a screenshot => each time test runs, the img is overriden
-    save_screenshot('homepage.png')
-
-    expect(page).to have_css 'article.product', count: 10
+    # VERIFY
+    expect(page).to have_css("div#navbar", text: "My Cart (1)")
   end
 
 end
