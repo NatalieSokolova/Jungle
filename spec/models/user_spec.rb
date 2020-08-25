@@ -61,29 +61,28 @@ RSpec.describe User, type: :model do
 
   describe '.authenticate_with_credentials' do
     it 'should log user in if credentials are correct' do
-      @user = User.create(first_name: 'James', last_name: 'Joyce', email: 'ulysses@email.com', password: 'Bloomsday', password_confirmation: 'Doomsday')
-      #expect(@user).to be_present
+      @user = User.create(first_name: 'James', last_name: 'Joyce', email: 'ulysses@email.com', password: 'Bloomsday', password_confirmation: 'Bloomsday')
       expect(User.authenticate_with_credentials('ulysses@email.com', 'Bloomsday')).to eq(@user)
     end
 
-    # it 'should log user in if password is correct and email has trailing whitespaces' do
-    #   @user = User.create(first_name: 'James', last_name: 'Joyce', email: 'ulysses@email.com', password: 'Bloomsday', password_confirmation: 'Doomsday')
-    #   expect(User.authenticate_with_credentials('  ulysses@email.com  ', 'Bloomsday')).to eq(@user)
-    # end
+    it 'should log user in if password is correct and email has trailing whitespaces' do
+      @user = User.create(first_name: 'James', last_name: 'Joyce', email: 'ulysses@email.com', password: 'Bloomsday', password_confirmation: 'Bloomsday')
+      expect(User.authenticate_with_credentials('  ulysses@email.com  ', 'Bloomsday')).to eq(@user)
+    end
 
-     # it 'should log user in if password is correct and email is in a different case' do
-    #   @user = User.create(first_name: 'James', last_name: 'Joyce', email: 'ulysses@email.com', password: 'Bloomsday', password_confirmation: 'Doomsday')
-    #   expect(User.authenticate_with_credentials('ULysseS@email.COM', 'Bloomsday')).to eq(@user)
-    # end
+     it 'should log user in if password is correct and email is in a different case' do
+      @user = User.create(first_name: 'James', last_name: 'Joyce', email: 'ulysses@email.com', password: 'Bloomsday', password_confirmation: 'Bloomsday')
+      expect(User.authenticate_with_credentials('ULysseS@email.COM', 'Bloomsday')).to eq(@user)
+    end
 
-    # it 'should not log user in if email is incorrect' do
-    #@user = User.create(first_name: 'James', last_name: 'Joyce', email: 'ulysses@email.com', password: 'Bloomsday', password_confirmation: 'Doomsday')
-    #expect(User.authenticate_with_credentials('odyssey@email.com', 'Bloomsday')).to be_nil
-    # end
+    it 'should not log user in if email is incorrect' do
+    @user = User.create(first_name: 'James', last_name: 'Joyce', email: 'ulysses@email.com', password: 'Bloomsday', password_confirmation: 'Bloomsday')
+    expect(User.authenticate_with_credentials('odyssey@email.com', 'Bloomsday')).to be_nil
+    end
 
-    # it 'should not log user in if password is incorrect' do
-    # @user = User.create(first_name: 'James', last_name: 'Joyce', email: 'ulysses@email.com', password: 'Bloomsday', password_confirmation: 'Doomsday')
-    # expect(User.authenticate_with_credentials('ulysses@email.com', 'Doomsday')).to be_nil
-    # end
+    it 'should not log user in if password is incorrect' do
+    @user = User.create(first_name: 'James', last_name: 'Joyce', email: 'ulysses@email.com', password: 'Bloomsday', password_confirmation: 'Bloomsday')
+    expect(User.authenticate_with_credentials('ulysses@email.com', 'Doomsday')).to be_nil
+    end
   end
 end
