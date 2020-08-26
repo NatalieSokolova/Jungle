@@ -4,7 +4,7 @@
 
 <%= form_for :user, url: '/users' do |f| %>
 <% if !session[:user_id] %>
-<strong><%= flash[:error] %></strong>
+<strong style="color: red"><%= flash[:error] %></strong>
 <% end %>
 <div class="form-group">
 <label for="inputFirstName">First Name:</label>
