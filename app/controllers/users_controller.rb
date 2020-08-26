@@ -9,7 +9,7 @@ def create
     session[:user_id] = user.id
     redirect_to '/'
   else
-    flash[:error] = "Oops! Could not create a user"
+    flash[:error] = "Oops! Could not create a user. Please, try again"
     redirect_to '/signup'
   end
 end
