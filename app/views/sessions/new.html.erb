@@ -3,7 +3,9 @@
 </header>
 
 <%= form_tag '/login' do %>
-
+  <% if !session[:user_id] %>
+  <strong><%= flash[:error] %></strong>
+  <% end %>
   <div class="form-group">
   <label for="inputEmail">Email:</label>
   <input type="email" class="form-control" id="inputEmail" placeholder="Your Email"<%= text_field_tag :email %>
