@@ -3,7 +3,9 @@
 </header>
 
 <%= form_for :user, url: '/users' do |f| %>
-
+<% if !session[:user_id] %>
+  <div class="alert"><%= flash[:error] %></div>
+<% end %>
 <div class="form-group">
 <label for="inputFirstName">First Name:</label>
 <input type="firstName" class="form-control" id="inputFirstName" placeholder="Your First Name"<%= f.text_field :first_name %>
