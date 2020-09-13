@@ -1,8 +1,10 @@
 # Jungle
 
 A mini e-commerce application built with Rails 4.2.
+
 A user (both registered or not) can view and purchase products through this application. An admin has the ability to create new products and categories.
-Testing is dome with Rspec and Capybara
+Testing is dome with Rspec and Capybara.
+
 Who needs boring dress shoes when you can buy Russian Spy Shoes at Jungle? Our users can buy everything from electronics, and collectibles to clothing, furniture and other home décor. Our free website makes it easy to find items that would make you stand out in the crowd.
 But do not just take my word for it, check it for yourself!
 
